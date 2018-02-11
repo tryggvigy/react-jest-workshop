@@ -1,31 +1,52 @@
 import React from 'react'
 import {shallow, mount} from 'enzyme'
-import getStoreStub from '../store/Customers.stub'
 import CustomerList from './CustomerList'
 
+let store
+let _customers = []
+let updateStateWithCustomers = null
+
+beforeEach(() => {
+  store = {
+    getCustomers: () => _customers,
+    subscribe: fn => {
+      updateStateWithCustomers = fn;
+      return jest.fn();
+    },
+    setCustomers: c => { _customers = _customers.concat(c) },
+  }
+})
+
+afterEach(() => {
+  _customers = []
+  updateStateWithCustomers = null
+})
+
 test('should render no customers', () => {
-  const wrapper = shallow(<CustomerList store={getStoreStub().store} />)
+  const wrapper = shallow(<CustomerList store={store} />)
   expect(wrapper.getElement()).toMatchSnapshot()
 })
 
 test('should render customers', () => {
-  const {store} = getStoreStub([{name: 'Bob'}, {name: 'Joanna'}])
+  store.setCustomers([{name: 'Bob'}, {name: 'Joanna'}]);
   const wrapper = shallow(<CustomerList store={store} />)
   expect(wrapper.getElement()).toMatchSnapshot()
 })
 
 test('should respond to store updates', () => {
-  const {store, updateCustomers} = getStoreStub()
   const wrapper = shallow(<CustomerList store={store} />)
   expect(wrapper.getElement()).toMatchSnapshot()
-  updateCustomers([{name: 'Jill'}, {name: 'Fred'}])
+
+  store.setCustomers([{name: 'Jill'}, {name: 'Fred'}])
+  updateStateWithCustomers();
   wrapper.update();
+
   expect(wrapper.getElement()).toMatchSnapshot()
 })
 
 test('unsubscribe when unmounted', () => {
-  const {unsubscribe, store} = getStoreStub()
-  const wrapper = shallow(<CustomerList store={store} />)
-  wrapper.unmount()
-  expect(unsubscribe).toHaveBeenCalledTimes(1)
+  const customerListInstance = shallow(<CustomerList store={store} />).instance();
+  customerListInstance.componentDidMount();
+  customerListInstance.componentWillUnmount();
+  expect(customerListInstance.unsubscribe).toHaveBeenCalledTimes(1)
 })
