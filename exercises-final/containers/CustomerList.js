@@ -1,12 +1,14 @@
-import React, {PropTypes, Component} from 'react'
+import React  from 'react'
+import PropTypes from 'prop-types'
 import store from '../store/Customers'
 
-class CustomerList extends Component {
+class CustomerList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       customers: props.store.getCustomers(),
     }
+    this.updateStateWithCustomers = this.updateStateWithCustomers.bind(this)
   }
   componentDidMount() {
     this.unsubscribe = this.props.store.subscribe(this.updateStateWithCustomers)
@@ -15,7 +17,7 @@ class CustomerList extends Component {
     this.unsubscribe()
   }
 
-  updateStateWithCustomers = () => {
+  updateStateWithCustomers() {
     const customers = this.props.store.getCustomers()
     this.setState({customers})
   }

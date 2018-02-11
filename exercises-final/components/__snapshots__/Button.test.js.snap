@@ -1,12 +1,13 @@
-exports[`test styles the button with a background of the context color 1`] = `
-<Button>
-  <button
-    style={
-      Object {
-        "background": "blue",
-      }
-    }>
-    Click Me
-  </button>
-</Button>
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`styles the button with a background of the context color 1`] = `
+<button
+  style={
+    Object {
+      "background": "blue",
+    }
+  }
+>
+  Click Me
+</button>
 `;

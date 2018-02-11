@@ -1,33 +1,22 @@
-# [React][React] + [Jest][Jest] + [Enzyme][Enzyme] = :heart:
+# [React][React] + [Jest][Jest] + [Enzyme][Enzyme]
 
-[![slides-badge][slides-badge]][slides]
-[![PRs Welcome][prs-badge]][prs]
-[![Donate][donate-badge]][donate]
-
-<a href="https://app.codesponsor.io/link/PKGFLnhDiFvsUA5P4kAXfiPs/kentcdodds/react-jest-workshop" rel="nofollow"><img src="https://app.codesponsor.io/embed/PKGFLnhDiFvsUA5P4kAXfiPs/kentcdodds/react-jest-workshop.svg" style="width: 888px; height: 68px;" alt="Sponsor" /></a>
-
-Find slides [here](http://kcd.im/testing-react)
+??Find slides [here](http://kcd.im/testing-react)
 
 This is a workshop for learning how to test [React][React] with the [Jest][Jest] testing framework and the
 [Enzyme][Enzyme] testing library.
 
 ## Project Setup
 
-This project assumes you have [NodeJS v6](http://nodejs.org/) or greater installed. It's also recommended to use the
-[`yarn`](https://yarnpkg.com/) client (rather than [npm](https://www.npmjs.com/)). If you'd rather stick with `npm`,
-that's fine. Just replace `yarn` with `npm` in the instructions below and hope that things don't break 😏.
-You'll also need a recent version of [git](https://git-scm.com/) installed as well.
+This project assumes you have [NodeJS v8](http://nodejs.org/) or greater installed.
 
 With that, run:
 
 ```
-git clone https://github.com/kentcdodds/react-jest-workshop.git
+git@github.com:tryggvigy/react-jest-workshop.git
 cd react-jest-workshop
-yarn run setup
+yarn install
+yarn test:final
 ```
-
-If the `yarn run setup` script finishes without errors (don't worry about warnings) then you're good to go. Otherwise,
-please [file an issue](https://help.github.com/articles/creating-an-issue/).
 
 ## Testing Instructions
 
@@ -44,16 +33,6 @@ will automatically re-run your tests so you can quickly see how you're doing.
 
 Good luck!
 
-# LICENSE
-
-MIT
-
 [React]: https://facebook.github.io/react/
 [Jest]: http://facebook.github.io/jest/
 [Enzyme]: http://airbnb.io/enzyme/
-[slides]: http://kcd.im/react-jest
-[slides-badge]: https://cdn.rawgit.com/kentcdodds/custom-badges/2/badges/slides.svg
-[donate]: http://kcd.im/donate
-[prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
-[prs]: http://makeapullrequest.com
-[donate-badge]: https://img.shields.io/badge/$-support-green.svg?style=flat-square
