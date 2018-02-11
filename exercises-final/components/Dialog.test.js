@@ -5,7 +5,7 @@ import Dialog from './Dialog'
 describe('Dialog', () => {
   it('calls onClose prop on clicks outside of the component', () => {
     const onClose = jest.fn();
-    const instance = shallow(<Dialog onClose={onClose} />).instance();
+    shallow(<Dialog onClose={onClose} />);
     expect(onClose).toHaveBeenCalledTimes(0);
     document.body.click();
     expect(onClose).toHaveBeenCalledTimes(1);

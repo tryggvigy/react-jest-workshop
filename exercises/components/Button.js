@@ -1,11 +1,10 @@
-import React, {PropTypes} from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 
-export default Button
-
-function Button({children}, {color}) {
+export default function Button(props, context) {
   return (
-    <button style={{background: color}}>
-      {children}
+    <button style={{background: context.color}}>
+      {props.children}
     </button>
   )
 }
@@ -15,5 +14,5 @@ Button.propTypes = {
 }
 
 Button.contextTypes = {
-  color: React.PropTypes.string
+  color: PropTypes.string
 }

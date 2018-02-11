@@ -1,14 +1,15 @@
-import React, {PropTypes, Component} from 'react'
-
-class Toggle extends Component {
+import React from 'react'
+import PropTypes from 'prop-types';
+class Toggle extends React.Component {
   constructor(props, ...rest) {
     super(props, ...rest)
     this.state = {
       toggledOn: props.initialToggledOn || false,
     }
+    this.handleToggleClick= this.handleToggleClick.bind(this)
   }
-
-  handleToggleClick = () => {
+ 
+  handleToggleClick() {
     const toggledOn = !this.state.toggledOn
     this.props.onToggle(toggledOn)
     this.setState({toggledOn})

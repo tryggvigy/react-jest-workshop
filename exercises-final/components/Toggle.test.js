@@ -31,7 +31,7 @@ test('invokes the onToggle prop when clicked', () => {
       onToggle={onToggle}
     />
   )
-  wrapper.find('button').first().simulate('click')
+  wrapper.find('button').first().prop('onClick')()
   expect(onToggle).toHaveBeenCalledTimes(1)
   expect(onToggle).toBeCalledWith(true)
 })
