@@ -24,9 +24,10 @@ describe('Dialog', () => {
   it(`adds window click event listener on mount and removes on unmount.
       Also, make sure that the document click listener is the component method.`,
       () => {
-    // Not a good test. Breaks black-box.
-    jest.spyOn(document, 'addEventListener').mockImplementation(() => {});
-    jest.spyOn(document, 'removeEventListener').mockImplementation(() => {});
+      document.addEventListener = jest.fn();
+      document.removeEventListener = jest.fn();
+    // jest.spyOn(document, 'addEventListener').mockImplementation(() => {});
+    // jest.spyOn(document, 'removeEventListener').mockImplementation(() => {});
     
     expect(document.addEventListener).toHaveBeenCalledTimes(0);
     const wrapper = shallow(<Dialog onClose={() => {}} />);
@@ -38,6 +39,7 @@ describe('Dialog', () => {
 
     // get the second argument (0-index) of the first call to this mock
     // that is, the click event handler. `document.addEventListener('click', fn)`
+    // Not a good assertion. Breaks black-box.
     const documentClickHandler = document.addEventListener.mock.calls[0][1];
     expect(documentClickHandler).toBe(wrapper.instance().handleDocumentClick)
 

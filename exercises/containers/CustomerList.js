@@ -7,6 +7,7 @@ class CustomerList extends Component {
     this.state = {
       customers: store.getCustomers(),
     }
+    this.updateStateWithCustomers = this.updateStateWithCustomers.bind(this);
   }
   componentDidMount() {
     this.unsubscribe = store.subscribe(this.updateStateWithCustomers)
@@ -15,7 +16,7 @@ class CustomerList extends Component {
     this.unsubscribe()
   }
 
-  updateStateWithCustomers = () => {
+  updateStateWithCustomers() {
     const customers = store.getCustomers()
     this.setState({customers})
   }
