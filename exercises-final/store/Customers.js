@@ -5,8 +5,8 @@ function getCustomers() {
   return customers;
 }
 
-function setCustomers(customers) {
-  customers = customers;
+function setCustomers(newCustomers) {
+  customers = newCustomers;
   letSubscribersKnow();
 }
 

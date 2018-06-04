@@ -7,10 +7,11 @@
     "jest/no-identical-title": "error",
     "jest/prefer-to-have-length": "error",
     "jest/valid-expect": "error",
-    "jest/no-large-snapshots": ["error", { "maxSize": 20 }]
+    "jest/no-large-snapshots": ["error", { "maxSize": 20 }],
+    "jest/valid-expect-in-promise": "error"
   },
   "parserOptions": {
-    "ecmaVersion": 2015,
+    "ecmaVersion": 2018,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true,
