@@ -2,6 +2,11 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Toggle from './Toggle';
 
+test('renders correctly', () => {
+  const wrapper = shallow(<Toggle onToggle={() => {}} children="Toggle Me" />);
+  expect(wrapper.getElement()).toMatchSnapshot();
+});
+
 test('has toggle--off class applied by default', () => {
   const wrapper = shallow(<Toggle onToggle={() => {}} children="Toggle Me" />);
   expect(wrapper.hasClass('toggle--off')).toBe(true);

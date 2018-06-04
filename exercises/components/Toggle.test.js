@@ -1,5 +1,11 @@
-// you'll need to import react, enzyme's render and mount functions,
+// you'll need to import react, enzyme's render and shallow functions,
 // and ./Toggle
+
+test('renders correctly', () => {
+  // render the component
+  // expect snapshot to match rendered component
+});
+
 
 test('has toggle--off class applied by default', () => {
   // render the component

@@ -1,3 +1,4 @@
 {
-  "setupTestFrameworkScriptFile": "../setupTests.js"
+  "setupTestFrameworkScriptFile": "../setupTests.js",
+  "restoreMocks": true
 }

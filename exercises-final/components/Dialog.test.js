@@ -1,8 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Dialog from './Dialog';
+import { AssertionError } from 'assert';
 
 describe('Dialog', () => {
+
   it('calls onClose prop on clicks outside of the component', () => {
     const onClose = jest.fn();
     shallow(<Dialog onClose={onClose} />);
@@ -23,8 +25,8 @@ describe('Dialog', () => {
 
   it(`adds window click event listener on mount and removes on unmount.
       Also, make sure that the document click listener is the component method.`, () => {
-    document.addEventListener = jest.fn();
-    document.removeEventListener = jest.fn();
+    jest.spyOn(document, 'addEventListener').mockImplementation(() => {});
+    jest.spyOn(document, 'removeEventListener').mockImplementation(() => {});
 
     expect(document.addEventListener).toHaveBeenCalledTimes(0);
     const wrapper = shallow(<Dialog onClose={() => {}} />);
@@ -39,5 +41,12 @@ describe('Dialog', () => {
     // Not a good assertion. Breaks black-box.
     const documentClickHandler = document.addEventListener.mock.calls[0][1];
     expect(documentClickHandler).toBe(wrapper.instance().handleDocumentClick);
+  });
+
+  it('clicking the document calls onClose', () => {
+    const mockOnClose = jest.fn()
+    const wrapper = shallow(<Dialog onClose={mockOnClose} />);
+    document.body.click();
+    expect(mockOnClose).toHaveBeenCalledTimes(1)
   });
 });
