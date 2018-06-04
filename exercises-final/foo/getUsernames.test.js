@@ -1,4 +1,3 @@
-jest.mock('debug');
 jest.mock('./userApi', () => ({
   fetchUsers: () => Promise.resolve([{ name: 'Alice' }, { name: 'Bob' }]),
 }));
