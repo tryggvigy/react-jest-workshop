@@ -1,5 +1,30 @@
-let _customers = [];
-let _callbacks = [];
+let customers = [];
+let callbacks = [];
+
+function getCustomers() {
+  return customers;
+}
+
+function setCustomers(customers) {
+  customers = customers;
+  letSubscribersKnow();
+}
+
+function subscribe(callback) {
+  callbacks.push(callback);
+  return function removeCallback() {
+    callbacks.splice(callbacks.indexOf(callback), 1);
+  };
+}
+
+function reset() {
+  customers = [];
+  callbacks = [];
+}
+
+function letSubscribersKnow() {
+  callbacks.forEach(cb => cb());
+}
 
 export default {
   getCustomers,
@@ -7,28 +32,3 @@ export default {
   subscribe,
   reset,
 };
-
-function getCustomers() {
-  return _customers;
-}
-
-function setCustomers(customers) {
-  _customers = customers;
-  _letSubscribersKnow();
-}
-
-function subscribe(callback) {
-  _callbacks.push(callback);
-  return function removeCallback() {
-    _callbacks.splice(_callbacks.indexOf(callback), 1);
-  };
-}
-
-function reset() {
-  _customers = [];
-  _callbacks = [];
-}
-
-function _letSubscribersKnow() {
-  _callbacks.forEach(cb => cb());
-}

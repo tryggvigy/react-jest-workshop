@@ -1,5 +1,5 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class Dialog extends React.Component {
   constructor(...args) {
@@ -25,14 +25,10 @@ export default class Dialog extends React.Component {
   }
 
   render() {
-    return (
-      <div
-        onClick={this.handleDialogClick}
-      >Beautiful dialog with a backdrop</div>
-    )
+    return <div onClick={this.handleDialogClick}>Beautiful dialog with a backdrop</div>;
   }
 }
 
 Dialog.propTypes = {
   onClose: PropTypes.func,
-}
+};

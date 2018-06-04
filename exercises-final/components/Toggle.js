@@ -1,33 +1,31 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
 class Toggle extends React.Component {
   constructor(props, ...rest) {
-    super(props, ...rest)
+    super(props, ...rest);
     this.state = {
       toggledOn: props.initialToggledOn || false,
-    }
-    this.handleToggleClick= this.handleToggleClick.bind(this)
+    };
+    this.handleToggleClick = this.handleToggleClick.bind(this);
   }
- 
+
   handleToggleClick() {
-    const toggledOn = !this.state.toggledOn
-    this.props.onToggle(toggledOn)
-    this.setState({toggledOn})
+    const toggledOn = !this.state.toggledOn;
+    this.props.onToggle(toggledOn);
+    this.setState({ toggledOn });
   }
 
   render() {
-    const {children} = this.props
-    const {toggledOn} = this.state
+    const { children } = this.props;
+    const { toggledOn } = this.state;
 
-    const onOff = toggledOn ? 'on' : 'off'
-    const toggledClassName = `toggle--${onOff}`
+    const onOff = toggledOn ? 'on' : 'off';
+    const toggledClassName = `toggle--${onOff}`;
     return (
       <div className={`toggle ${toggledClassName}`}>
-        <button onClick={this.handleToggleClick}>
-          {children}
-        </button>
+        <button onClick={this.handleToggleClick}>{children}</button>
       </div>
-    )
+    );
   }
 }
 
@@ -35,6 +33,6 @@ Toggle.propTypes = {
   initialToggledOn: PropTypes.bool,
   onToggle: PropTypes.func.isRequired,
   children: PropTypes.any.isRequired,
-}
+};
 
-export default Toggle
+export default Toggle;

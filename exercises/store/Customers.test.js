@@ -2,7 +2,7 @@ test('should start with empty', () => {
   // get the store from your setup function
   // call getCustomers on it
   // assert that the lenth of customers is 0
-})
+});
 
 test('should allow you to set customers and get them', () => {
   // get the store
@@ -10,7 +10,7 @@ test('should allow you to set customers and get them', () => {
   // get the customers from the store
   // assert that there are two customers
   // assert that the customers you got are the ones you set
-})
+});
 
 test('should allow you to subscribe to the store', () => {
   // get the store
@@ -22,7 +22,7 @@ test('should allow you to subscribe to the store', () => {
   // call the unsubscribe function you got when subscribing
   // call setCustomers
   // assert that your mock function was not called
-})
+});
 
 // Create a `setup` function:
 // clear the require cache with jest.resetModules() so you can require a fresh copy of the store

@@ -6,15 +6,15 @@
     "jest/no-focused-tests": "error",
     "jest/no-identical-title": "error",
     "jest/prefer-to-have-length": "error",
-    "jest/valid-expect": "error"
+    "jest/valid-expect": "error",
+    "jest/no-large-snapshots": ["error", { "maxSize": 20 }]
   },
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 2015,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true,
-      "modules": true,
-      "experimentalObjectRestSpread": true
+      "modules": true
     }
   }
 }

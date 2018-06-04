@@ -1,4 +1,4 @@
-export default getStoreStub
+export default getStoreStub;
 
 /**
  * Create a stub for the store which can be used for assertions
@@ -7,21 +7,21 @@ export default getStoreStub
  *   store.callback is invoked. store.getCustomers will return ref.customers
  */
 function getStoreStub(customers = []) {
-  let callback
-  const unsubscribe = jest.fn()
-  const ref = {customers}
+  let callback;
+  const unsubscribe = jest.fn();
+  const ref = { customers };
 
   const store = {
     getCustomers: () => ref.customers,
     subscribe: cb => {
-      callback = cb
-      return unsubscribe
+      callback = cb;
+      return unsubscribe;
     },
-  }
-  return {unsubscribe, store, updateCustomers}
+  };
+  return { unsubscribe, store, updateCustomers };
 
   function updateCustomers(newCustomers) {
-    ref.customers = newCustomers
-    callback()
+    ref.customers = newCustomers;
+    callback();
   }
 }
